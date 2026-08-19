@@ -45,7 +45,7 @@ import airplaneImage from './assets/images/airplane_window_travel_1780755588338.
 // @ts-ignore
 import beachImage from './assets/images/tropical_beach_hammock_1780755605622.png';
 // @ts-ignore
-import logoImage from './assets/images/The tourism People 2-01.jpg.jpeg';
+import logoImage from './assets/images/The tourism People 2-01.png';
 const keyboardEscapeImage = '';
 // @ts-ignore
 import luxuryDestinationImage from './assets/images/luxury_destination_santorini_1781099766214.png';
@@ -2111,7 +2111,7 @@ export default function App() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <img 
-              src='src/assets/images/The tourism People 2-01.png'
+              src={logoImage}
               alt="The Tourism People GH Logo" 
               className={`object-contain group-hover:scale-105 transition-all duration-500 ease-in-out shrink-0 mix-blend-multiply ${
                 isScrolled ? 'w-[2.5rem] h-[2.5rem] sm:w-10 sm:h-10' : 'w-[3.25rem] h-[3.25rem] sm:w-12 sm:h-12'
