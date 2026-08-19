@@ -1770,6 +1770,39 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'tour' | 'plan' | 'contact'>('home');
   const [activeNav, setActiveNav] = useState('hero_section');
 
+  // Keep the browser tab title and meta description aligned with the active view
+  useEffect(() => {
+    const PAGE_META: Record<typeof currentPage, { title: string; description: string }> = {
+      home: {
+        title: 'The Tourism People GH | Ghana Travel, Tours & Visa Services',
+        description: "Ghana's premium travel and visa agency. Curated tour packages to Dubai, Europe, the UK, USA and beyond, plus expert passport, visa and flight booking services."
+      },
+      tour: {
+        title: 'Curated Tour Packages | The Tourism People GH',
+        description: 'Browse expertly curated tour packages from Ghana to Dubai, Europe, Zanzibar, South Africa and more, complete with flights, hotels and guided itineraries.'
+      },
+      plan: {
+        title: 'Plan Your Journey | The Tourism People GH',
+        description: 'Design your own Ghana getaway: coastal escapes, royal heritage trails, and rainforest safari adventures tailored to your travel style.'
+      },
+      contact: {
+        title: 'Contact Us | The Tourism People GH',
+        description: 'Get in touch with The Tourism People GH for tours, visas, passports and flight bookings. Based in Accra, Ghana and GTA licensed.'
+      }
+    };
+
+    const meta = PAGE_META[currentPage];
+    document.title = meta.title;
+
+    let descTag = document.querySelector('meta[name="description"]');
+    if (!descTag) {
+      descTag = document.createElement('meta');
+      descTag.setAttribute('name', 'description');
+      document.head.appendChild(descTag);
+    }
+    descTag.setAttribute('content', meta.description);
+  }, [currentPage]);
+
   const handlePageChange = (page: 'home' | 'tour' | 'plan' | 'contact') => {
     setCurrentPage(page);
     setActiveNav(page === 'home' ? 'hero_section' : page === 'tour' ? 'curated-tours' : page === 'plan' ? 'vibe_selector' : 'contact_section');
