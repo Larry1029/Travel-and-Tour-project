@@ -1,0 +1,6 @@
+{
+  "name": "The Tourism People GH",
+  "description": "An interactive, elegant tourism hero platform with fluid motion animations displaying travel and tropical island resort imagery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
