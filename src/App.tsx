@@ -1770,6 +1770,27 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'tour' | 'plan' | 'contact'>('home');
   const [activeNav, setActiveNav] = useState('hero_section');
 
+  // Dynamic SEO page title & meta description updates
+  useEffect(() => {
+    const titles: Record<string, string> = {
+      home: "The Tourism People GH | Luxury Ghana Tours, Safaris & Bespoke Escapes",
+      tour: "Curated Ghana Tours & Travel Packages | The Tourism People GH",
+      plan: "Plan Your Custom Ghana Voyage & Itinerary Builder | The Tourism People GH",
+      contact: "Contact Concierge & Book Your Ghana Escape | The Tourism People GH"
+    };
+    const descriptions: Record<string, string> = {
+      home: "Discover unforgettable Ghana travel experiences, curated luxury safaris, cultural expeditions, Cape Coast heritage tours, and tailor-made bespoke itineraries with The Tourism People GH.",
+      tour: "Explore our hand-crafted, all-inclusive luxury travel packages across Ghana, South Africa, Zanzibar, UK, USA, Dubai, and Morocco with expert concierge guidance.",
+      plan: "Build your dream Ghanaian voyage step-by-step with our interactive travel planner. Select your vibe, custom preferences, and let our specialists design your journey.",
+      contact: "Get in touch with The Tourism People GH travel concierge in Accra. Reach our specialists for custom reservations, group tours, and bespoke corporate itineraries."
+    };
+    document.title = titles[currentPage] || titles.home;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', descriptions[currentPage] || descriptions.home);
+    }
+  }, [currentPage]);
+
   const handlePageChange = (page: 'home' | 'tour' | 'plan' | 'contact') => {
     setCurrentPage(page);
     setActiveNav(page === 'home' ? 'hero_section' : page === 'tour' ? 'curated-tours' : page === 'plan' ? 'vibe_selector' : 'contact_section');
