@@ -1,4 +1,5 @@
 import { useState, FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Mail, 
@@ -11,13 +12,14 @@ import {
 
 // @ts-ignore
 import solutechLogo from '../assets/images/Primary white font.png';
+import { logoImage } from '../data/travelData';
 
 interface FooterSectionProps {
-  onPageChange: (page: 'home' | 'tour' | 'plan' | 'contact') => void;
-  logoUrl: string;
+  onPageChange?: (page: 'home' | 'tour' | 'plan' | 'contact') => void;
+  logoUrl?: string;
 }
 
-export function FooterSection({ onPageChange, logoUrl }: FooterSectionProps) {
+export function FooterSection({ onPageChange, logoUrl = logoImage }: FooterSectionProps) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -33,11 +35,6 @@ export function FooterSection({ onPageChange, logoUrl }: FooterSectionProps) {
     }, 1200);
   };
 
-  const handleLinkClick = (page: 'home' | 'tour' | 'plan' | 'contact') => {
-    onPageChange(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className="w-full relative overflow-hidden bg-[#051426] border-t border-slate-805/40 text-slate-300 pt-16 pb-12 px-6 sm:px-12 md:px-16 xl:px-20 select-none shadow-[0_-12px_40px_-15px_rgba(0,0,0,0.5)]" id="premium_rich_footer">
       
@@ -51,8 +48,8 @@ export function FooterSection({ onPageChange, logoUrl }: FooterSectionProps) {
         {/* Top Header section mirroring the "Ready to start syncing..." structure */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-16 border-b border-white/10 relative z-10">
           <div className="flex flex-col md:flex-row md:items-center gap-8 max-w-3xl">
-            <button 
-              onClick={() => handleLinkClick('home')}
+            <Link 
+              to="/"
               className="cursor-pointer block border-none p-0 bg-transparent rounded-2xl focus:outline-none hover:scale-[1.02] active:scale-95 transition-all duration-300 shrink-0 self-start md:self-auto"
               title="Return to Home"
             >
@@ -62,7 +59,7 @@ export function FooterSection({ onPageChange, logoUrl }: FooterSectionProps) {
                 className="h-20 sm:h-24 w-auto object-contain bg-white rounded-2xl p-1.5 shadow-xl"
                 referrerPolicy="no-referrer"
               />
-            </button>
+            </Link>
             <div className="space-y-2">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-tight leading-[1.15]">
                 Ready to embark on <br className="hidden sm:inline" />
@@ -71,13 +68,13 @@ export function FooterSection({ onPageChange, logoUrl }: FooterSectionProps) {
             </div>
           </div>
           <div className="shrink-0 self-start md:self-auto">
-            <button 
-              onClick={() => handleLinkClick('contact')}
+            <Link 
+              to="/contact"
               className="bg-white hover:bg-slate-100 text-slate-950 px-8 py-3.5 rounded-full font-bold text-sm shadow-xl active:scale-95 hover:scale-[1.02] transition-all duration-300 cursor-pointer inline-flex items-center gap-2 border border-transparent"
             >
               <span>Contact our Concierge</span>
               <ArrowRight className="w-4 h-4 text-slate-900" />
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -144,24 +141,29 @@ export function FooterSection({ onPageChange, logoUrl }: FooterSectionProps) {
             <h4 className="text-xs font-bold text-amber-500 tracking-widest uppercase font-mono">Quick Links</h4>
             <ul className="space-y-3 text-xs text-slate-400 font-medium font-sans">
               <li>
-                <button onClick={() => handleLinkClick('home')} className="cursor-pointer hover:text-white transition-colors duration-200 block text-left bg-transparent border-none p-0">
+                <Link to="/" className="cursor-pointer hover:text-white transition-colors duration-200 block text-left">
                   Home
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => handleLinkClick('tour')} className="cursor-pointer hover:text-white transition-colors duration-200 block text-left bg-transparent border-none p-0">
+                <Link to="/tours" className="cursor-pointer hover:text-white transition-colors duration-200 block text-left">
                   Curated Tours
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => handleLinkClick('plan')} className="cursor-pointer hover:text-white transition-colors duration-200 block text-left bg-transparent border-none p-0">
+                <Link to="/plan" className="cursor-pointer hover:text-white transition-colors duration-200 block text-left">
                   Plan Journey
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => handleLinkClick('contact')} className="cursor-pointer hover:text-white transition-colors duration-200 block text-left bg-transparent border-none p-0">
+                <Link to="/services" className="cursor-pointer hover:text-white transition-colors duration-200 block text-left">
+                  Services & Visas
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="cursor-pointer hover:text-white transition-colors duration-200 block text-left">
                   Contact Us
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -171,29 +173,29 @@ export function FooterSection({ onPageChange, logoUrl }: FooterSectionProps) {
             <h4 className="text-xs font-bold text-amber-500 tracking-widest uppercase font-mono">Tour Locations</h4>
             <ul className="space-y-3 text-xs text-slate-400 font-medium font-sans">
               <li>
-                <button onClick={() => handleLinkClick('tour')} className="cursor-pointer hover:text-white transition-colors duration-200 block text-left bg-transparent border-none p-0">
-                  Dubai
-                </button>
+                <Link to="/tours" className="cursor-pointer hover:text-white transition-colors duration-200 block text-left">
+                  Dubai Packages
+                </Link>
               </li>
               <li>
-                <button onClick={() => handleLinkClick('tour')} className="cursor-pointer hover:text-white transition-colors duration-200 block text-left bg-transparent border-none p-0">
-                  Maldives
-                </button>
+                <Link to="/tours" className="cursor-pointer hover:text-white transition-colors duration-200 block text-left">
+                  Maldives Escapes
+                </Link>
               </li>
               <li>
-                <button onClick={() => handleLinkClick('tour')} className="cursor-pointer hover:text-white transition-colors duration-200 block text-left bg-transparent border-none p-0">
-                  Zanzibar Island Getaway
-                </button>
+                <Link to="/tours" className="cursor-pointer hover:text-white transition-colors duration-200 block text-left">
+                  Zanzibar Getaways
+                </Link>
               </li>
               <li>
-                <button onClick={() => handleLinkClick('tour')} className="cursor-pointer hover:text-white transition-colors duration-200 block text-left bg-transparent border-none p-0">
-                  Royal Windsor London
-                </button>
+                <Link to="/tours" className="cursor-pointer hover:text-white transition-colors duration-200 block text-left">
+                  Best of Europe
+                </Link>
               </li>
               <li>
-                <button onClick={() => handleLinkClick('tour')} className="cursor-pointer hover:text-white transition-colors duration-200 block text-left bg-transparent border-none p-0">
+                <Link to="/tours" className="cursor-pointer hover:text-white transition-colors duration-200 block text-left">
                   Kruger Safari & Cape Town
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
