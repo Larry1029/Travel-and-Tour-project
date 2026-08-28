@@ -1773,16 +1773,16 @@ export default function App() {
   // Dynamic SEO page title & meta description updates
   useEffect(() => {
     const titles: Record<string, string> = {
-      home: "The Tourism People GH | Luxury Ghana Tours, Safaris & Bespoke Escapes",
-      tour: "Curated Ghana Tours & Travel Packages | The Tourism People GH",
-      plan: "Plan Your Custom Ghana Voyage & Itinerary Builder | The Tourism People GH",
-      contact: "Contact Concierge & Book Your Ghana Escape | The Tourism People GH"
+      home: "The Tourism People GH | Premier Travel Agency & Luxury Tours Ghana",
+      tour: "Holiday Tour Packages & Dubai Escapes | The Tourism People GH",
+      plan: "Interactive Trip Planner & Visa Advisory | The Tourism People GH",
+      contact: "Contact Travel Concierge in Accra, Ghana | The Tourism People GH"
     };
     const descriptions: Record<string, string> = {
-      home: "Discover unforgettable Ghana travel experiences, curated luxury safaris, cultural expeditions, Cape Coast heritage tours, and tailor-made bespoke itineraries with The Tourism People GH.",
-      tour: "Explore our hand-crafted, all-inclusive luxury travel packages across Ghana, South Africa, Zanzibar, UK, USA, Dubai, and Morocco with expert concierge guidance.",
-      plan: "Build your dream Ghanaian voyage step-by-step with our interactive travel planner. Select your vibe, custom preferences, and let our specialists design your journey.",
-      contact: "Get in touch with The Tourism People GH travel concierge in Accra. Reach our specialists for custom reservations, group tours, and bespoke corporate itineraries."
+      home: "Official website of The Tourism People GH. Premier tour operator & travel agency in Accra, Ghana. Luxury Ghana tours, expedited passport services, consular visa assistance, and worldwide holiday packages.",
+      tour: "Explore curated international and local holiday tour packages with The Tourism People GH. Dubai, Maldives, Zanzibar, Europe, UK, South Africa, and Ghana heritage escapes.",
+      plan: "Design your custom travel itinerary with The Tourism People GH. Personalized safari routes, honeymoon escapes, visa prep, and expedited biometric passport assistance in Ghana.",
+      contact: "Get in touch with The Tourism People GH travel concierge desk in Accra. Call +233 24 455 5666 or message via WhatsApp for immediate travel consultation."
     };
     document.title = titles[currentPage] || titles.home;
     const metaDesc = document.querySelector('meta[name="description"]');
